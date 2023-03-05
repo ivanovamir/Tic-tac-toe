@@ -25,21 +25,21 @@ func main() {
 
 		fmt.Println("You're first player, choose you side:")
 
-		fmt.Println("1. - o")
-		fmt.Println("2. - x")
+		fmt.Printf("1. - %s\n", plX)
+		fmt.Printf("2. - %s\n", plO)
 
 		fmt.Scan(&choose)
 
-		if choose == "x" {
-			player1 = "x"
-			player2 = "o"
+		if choose == plX {
+			player1 = plX
+			player2 = plO
 		} else {
-			player1 = "o"
-			player2 = "x"
+			player1 = plO
+			player2 = plX
 		}
 		playerSide = player2
 
-		currentPlayer = "x"
+		currentPlayer = plX
 
 		fmt.Printf("You're second player, you're side is: %s\n", playerSide)
 
@@ -69,6 +69,7 @@ func main() {
 
 			// Победа?
 			if WinChecker() {
+				PrintBoard()
 				if currentPlayer == player1 {
 					fmt.Println("Player №1 WIN!!!")
 				} else {
@@ -79,6 +80,7 @@ func main() {
 
 			// Ничья?
 			if DrawChecker() {
+				PrintBoard()
 				fmt.Println("Draw :((")
 				break mg
 			}
@@ -118,10 +120,10 @@ func MakeMove(row, col int, pl string) {
 }
 
 func SwitchPlayers() {
-	if currentPlayer == "x" {
-		currentPlayer = "o"
+	if currentPlayer == plX {
+		currentPlayer = plO
 	} else {
-		currentPlayer = "x"
+		currentPlayer = plX
 	}
 }
 
